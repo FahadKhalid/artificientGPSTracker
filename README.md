@@ -99,6 +99,9 @@ A modern Android application built with Jetpack Compose and MVVM architecture fo
 4. **View History**: Navigate to the History tab to see all recorded trips
 5. **Configure Settings**: Adjust tracking intervals and background tracking in Settings
 
+## FAKE LOCATION
+I used LOKITO APP FOR THE FAKE LOCATION
+
 ## Development Setup
 
 1. Clone the repository
