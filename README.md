@@ -91,15 +91,6 @@ A modern Android application built with Jetpack Compose and MVVM architecture fo
 - **Navigation**: Navigation Compose
 - **Settings**: DataStore Preferences
 
-## Permissions
-
-The app requires the following permissions:
-- `ACCESS_FINE_LOCATION`: For precise GPS tracking
-- `ACCESS_COARSE_LOCATION`: For approximate location
-- `ACCESS_BACKGROUND_LOCATION`: For background tracking
-- `FOREGROUND_SERVICE`: For continuous tracking
-- `POST_NOTIFICATIONS`: For tracking notifications
-
 ## Usage
 
 1. **Start Tracking**: Tap "Start Tracking" to begin recording your trip
