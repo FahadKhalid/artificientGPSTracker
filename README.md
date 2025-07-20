@@ -115,4 +115,4 @@ I used LOCKITO APP FOR THE FAKE LOCATION
 ## NOTE
 
 This project is well-structured and coded with best practices.
-Please read the Architecture Analysis for more detailed information, which I designed using AI. 
+I'd like you to please read the Architecture Analysis.md file for more detailed information, which I designed using AI. 
