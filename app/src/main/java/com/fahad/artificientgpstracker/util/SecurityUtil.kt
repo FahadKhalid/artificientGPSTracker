@@ -3,9 +3,9 @@ package com.fahad.artificientgpstracker.util
 import android.content.Context
 import com.fahad.artificientgpstracker.domain.model.AppError
 import com.fahad.artificientgpstracker.domain.model.AppConstants
-import javax.inject.Inject
 
-class SecurityUtil @Inject constructor(
+
+class SecurityUtil(
     private val context: Context
 ) {
     

@@ -37,25 +37,6 @@ class FileUtil {
         
 
         
-        fun validateFileFormat(format: String): Boolean {
-            return format.lowercase() in listOf("csv", "json")
-        }
-        
-        fun shareFile(context: Context, uri: Uri, mimeType: String, title: String) {
-            try {
-                val intent = Intent(Intent.ACTION_SEND).apply {
-                    type = mimeType
-                    putExtra(Intent.EXTRA_STREAM, uri)
-                    putExtra(Intent.EXTRA_SUBJECT, title)
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                }
-                
-                val chooser = Intent.createChooser(intent, context.getString(R.string.export_share_trip_data))
-                chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(chooser)
-            } catch (e: Exception) {
-                // Handle case where no app can handle the share intent
-            }
-        }
+
     }
 } 

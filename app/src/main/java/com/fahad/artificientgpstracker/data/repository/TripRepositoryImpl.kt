@@ -7,11 +7,8 @@ import com.fahad.artificientgpstracker.data.model.LocationPoint
 import com.fahad.artificientgpstracker.domain.model.AppError
 import com.fahad.artificientgpstracker.domain.repository.TripRepository
 import com.fahad.artificientgpstracker.util.SecurityUtil
-import com.fahad.artificientgpstracker.util.DateUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -111,122 +108,6 @@ class TripRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             if (e is AppError) throw e
             throw AppError.databaseError("Failed to add location point", e)
-        }
-    }
-    
-    override suspend fun updateTripDistance(tripId: Long, distance: Double) {
-        try {
-            val trip = tripDao.getTripById(tripId)
-            trip?.let {
-                val validationResult = securityUtil.validateTripData(tripId, distance, it.duration)
-                if (validationResult.isFailure) {
-                    throw validationResult.exceptionOrNull() ?: AppError.validationError("Invalid trip data")
-                }
-                
-                tripDao.updateTrip(it.copy(distance = distance))
-            } ?: throw AppError.databaseError("Trip not found")
-        } catch (e: Exception) {
-            if (e is AppError) throw e
-            throw AppError.databaseError("Failed to update trip distance", e)
-        }
-    }
-    
-    override suspend fun exportTripToCSV(tripId: Long): String {
-        return try {
-            val trip = tripDao.getTripById(tripId)
-            val locationPoints = locationPointDao.getLocationPointsForTrip(tripId)
-            
-            if (trip == null) {
-                throw AppError.databaseError("Trip not found")
-            }
-            
-            val csvBuilder = StringBuilder()
-            csvBuilder.append("Trip ID,Start Time,End Time,Duration (ms),Distance (km),Is Completed\n")
-            
-            val startTime = DateUtil.formatDateTime(trip.startTime)
-            val endTime = trip.endTime?.let { DateUtil.formatDateTime(it) } ?: ""
-            val duration = trip.duration
-            val distance = trip.distance
-            val isCompleted = if (trip.isCompleted) "Yes" else "No"
-            
-            csvBuilder.append("$tripId,$startTime,$endTime,$duration,$distance,$isCompleted\n")
-            
-            // Add location points
-            csvBuilder.append("\nLocation Points\n")
-            csvBuilder.append("Timestamp,Latitude,Longitude,Speed (m/s),Accuracy (m)\n")
-            
-            locationPoints.forEach { point ->
-                val timestamp = DateUtil.formatDateTime(point.timestamp)
-                csvBuilder.append("$timestamp,${point.latitude},${point.longitude},${point.speed},${point.accuracy}\n")
-            }
-            
-            csvBuilder.toString()
-        } catch (e: Exception) {
-            if (e is AppError) throw e
-            throw AppError.fileError("Failed to export trip to CSV", e)
-        }
-    }
-    
-    override suspend fun exportTripToJSON(tripId: Long): String {
-        return try {
-            val trip = tripDao.getTripById(tripId) 
-                ?: throw AppError.databaseError("Trip not found")
-            
-            val locationPoints = locationPointDao.getLocationPointsForTrip(tripId)
-            
-            val jsonBuilder = StringBuilder()
-            jsonBuilder.append("{\n")
-            jsonBuilder.append("  \"trip\": {\n")
-            jsonBuilder.append("    \"id\": ${trip.id},\n")
-            jsonBuilder.append("    \"startTime\": \"${trip.startTime}\",\n")
-            jsonBuilder.append("    \"endTime\": ${if (trip.endTime != null) "\"${trip.endTime}\"" else "null"},\n")
-            jsonBuilder.append("    \"duration\": ${trip.duration},\n")
-            jsonBuilder.append("    \"distance\": ${trip.distance},\n")
-            jsonBuilder.append("    \"isCompleted\": ${trip.isCompleted}\n")
-            jsonBuilder.append("  },\n")
-            jsonBuilder.append("  \"locationPoints\": [\n")
-            
-            locationPoints.forEachIndexed { index, point ->
-                jsonBuilder.append("    {\n")
-                jsonBuilder.append("      \"timestamp\": \"${point.timestamp}\",\n")
-                jsonBuilder.append("      \"latitude\": ${point.latitude},\n")
-                jsonBuilder.append("      \"longitude\": ${point.longitude},\n")
-                jsonBuilder.append("      \"speed\": ${point.speed},\n")
-                jsonBuilder.append("      \"accuracy\": ${point.accuracy}\n")
-                jsonBuilder.append("    }${if (index < locationPoints.size - 1) "," else ""}\n")
-            }
-            
-            jsonBuilder.append("  ]\n")
-            jsonBuilder.append("}")
-            
-            jsonBuilder.toString()
-        } catch (e: Exception) {
-            if (e is AppError) throw e
-            throw AppError.fileError("Failed to export trip to JSON", e)
-        }
-    }
-
-    override suspend fun exportAllTripsToCSV(): String {
-        return try {
-            val trips = tripDao.getAllTrips().first()
-            
-            val csvBuilder = StringBuilder()
-            csvBuilder.append("Trip ID,Start Time,End Time,Duration (ms),Distance (km),Is Completed\n")
-            
-            trips.forEach { trip ->
-                val startTime = DateUtil.formatDateTime(trip.startTime)
-                val endTime = trip.endTime?.let { DateUtil.formatDateTime(it) } ?: ""
-                val duration = trip.duration
-                val distance = trip.distance
-                val isCompleted = if (trip.isCompleted) "Yes" else "No"
-                
-                csvBuilder.append("${trip.id},$startTime,$endTime,$duration,$distance,$isCompleted\n")
-            }
-            
-            csvBuilder.toString()
-        } catch (e: Exception) {
-            if (e is AppError) throw e
-            throw AppError.fileError("Failed to export all trips to CSV", e)
         }
     }
 } 

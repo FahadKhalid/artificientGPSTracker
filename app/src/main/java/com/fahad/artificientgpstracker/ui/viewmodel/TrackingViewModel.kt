@@ -309,9 +309,7 @@ class TrackingViewModel @Inject constructor(
                         accuracy = location.accuracy
                     )
                     
-                    // Update the trip with current accumulated distance
-                    val currentDistance = _state.value.distanceTraveled
-                    tripRepository.updateTripDistance(tripId, currentDistance)
+                    // Distance is updated when trip is stopped, no need to update continuously
                 } catch (e: Exception) {
                     val errorMessage = when (e) {
                         is AppError.DatabaseError -> e.message

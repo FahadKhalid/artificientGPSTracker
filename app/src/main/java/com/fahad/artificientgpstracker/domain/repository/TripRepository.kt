@@ -10,8 +10,4 @@ interface TripRepository {
     suspend fun stopTrip(tripId: Long, finalDistance: Double, finalDuration: Long)
     suspend fun deleteTrip(trip: Trip)
     suspend fun addLocationPoint(tripId: Long, latitude: Double, longitude: Double, speed: Float, accuracy: Float)
-    suspend fun updateTripDistance(tripId: Long, distance: Double)
-    suspend fun exportTripToCSV(tripId: Long): String
-    suspend fun exportTripToJSON(tripId: Long): String
-    suspend fun exportAllTripsToCSV(): String
 } 

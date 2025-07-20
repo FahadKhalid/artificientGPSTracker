@@ -12,9 +12,7 @@ import com.google.android.gms.location.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import javax.inject.Inject
-
-class LocationService @Inject constructor(
+class LocationService(
     private val context: Context,
     private val securityUtil: SecurityUtil
 ) {

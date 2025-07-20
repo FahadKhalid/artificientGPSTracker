@@ -2,6 +2,7 @@ package com.fahad.artificientgpstracker.ui.viewmodel
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fahad.artificientgpstracker.R
@@ -97,7 +98,16 @@ class TripHistoryViewModel @Inject constructor(
                 val exportData = csvBuilder.toString()
                 val fileName = context.getString(R.string.export_file_name_all_trips, System.currentTimeMillis())
                 FileUtil.saveToFile(context, exportData, fileName)?.let { uri ->
-                    FileUtil.shareFile(context, uri, "text/csv", "All Trip History")
+                    // Share file using Intent
+                    val intent = Intent(Intent.ACTION_SEND).apply {
+                        type = "text/csv"
+                        putExtra(Intent.EXTRA_STREAM, uri)
+                        putExtra(Intent.EXTRA_SUBJECT, "All Trip History")
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    val chooser = Intent.createChooser(intent, context.getString(R.string.export_share_trip_data))
+                    chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(chooser)
                 }
                 _userMessage.value = context.getString(R.string.msg_all_trips_exported)
             } catch (e: Exception) {
