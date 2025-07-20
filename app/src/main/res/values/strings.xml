@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">ArtificientGPSTracker</string>
+    
+    <!-- Navigation -->
+    <string name="nav_tracking">Tracking</string>
+    <string name="nav_history">History</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Tracking Screen -->
+    <string name="tracking_current_location">Current Location</string>
+    <string name="tracking_gps_location">GPS Location</string>
+    <string name="tracking_latitude">Lat: %s</string>
+    <string name="tracking_longitude">Lon: %s</string>
+    <string name="tracking_accuracy">Acc: %s m</string>
+    <string name="tracking_getting_location">Getting Location...</string>
+    <string name="tracking_processing">Processing...</string>
+    <string name="tracking_metrics">Tracking Metrics</string>
+    <string name="tracking_speed">Speed</string>
+    <string name="tracking_distance">Distance</string>
+    <string name="tracking_time">Time</string>
+    <string name="tracking_speed_unit">km/h</string>
+    <string name="tracking_distance_unit">km</string>
+    <string name="tracking_start">Start Tracking</string>
+    <string name="tracking_resume">Resume</string>
+    <string name="tracking_stop">Stop</string>
+    <string name="tracking_pause">Pause</string>
+    <string name="tracking_start_new">Start New Trip</string>
+    <string name="tracking_dismiss">Dismiss</string>
+    
+    <!-- Trip History Screen -->
+    <string name="history_title">Trip History</string>
+    <string name="history_no_trips">No trips recorded yet</string>
+    <string name="history_download">Download</string>
+    <string name="history_download_all">Download All History</string>
+    <string name="history_dismiss">Dismiss</string>
+    <string name="history_duration">Duration</string>
+    <string name="history_distance">Distance</string>
+    <string name="history_export">Export trip data</string>
+    <string name="history_delete">Delete trip</string>
+    <string name="history_export_csv">Export as CSV</string>
+    <string name="history_export_json">Export as JSON</string>
+    <string name="history_download_success">Trip history downloaded successfully</string>
+    <string name="history_download_failed">Failed to save file</string>
+    <string name="history_all_trips">All Trip History</string>
+    <string name="history_completed_yes">Yes</string>
+    <string name="history_completed_no">No</string>
+    
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_location_interval">Location Update Interval</string>
+    <string name="settings_location_interval_desc">How often the app should update your location</string>
+    <string name="settings_background_tracking">Background Tracking</string>
+    <string name="settings_background_tracking_desc">Allow tracking to continue when the app is in the background</string>
+    <string name="settings_enabled">Enabled</string>
+    <string name="settings_disabled">Disabled</string>
+    <string name="settings_current_settings">Current Settings</string>
+    
+    <!-- User Messages -->
+    <string name="msg_location_permission_required">Location permission required for GPS tracking</string>
+    <string name="msg_location_acquired">Location acquired successfully</string>
+    <string name="msg_location_permission_denied">Location permission required</string>
+    <string name="msg_tracking_started">Tracking started</string>
+    <string name="msg_tracking_start_failed">Failed to start tracking</string>
+    <string name="msg_tracking_paused">Tracking paused</string>
+    <string name="msg_tracking_resumed">Tracking resumed</string>
+    <string name="msg_trip_saved">Trip saved successfully</string>
+    <string name="msg_trip_save_failed">Failed to save trip</string>
+    <string name="msg_location_update_failed">Location update failed</string>
+    <string name="msg_tracking_resumed_session">Tracking resumed from previous session</string>
+    <string name="msg_no_internet_maps">No internet connection. Maps may not load properly.</string>
+    <string name="msg_no_internet_display">No internet connection. Maps may not display properly.</string>
+    <string name="msg_location_timeout">Failed to get location. Please check GPS settings.</string>
+    <string name="msg_location_failed">Failed to get location. Please check GPS settings.</string>
+    <string name="msg_location_save_failed">Failed to save location: %s</string>
+    <string name="msg_trip_deleted">Trip deleted successfully</string>
+    <string name="msg_trip_delete_failed">Failed to delete trip</string>
+    <string name="msg_trip_exported">Trip exported successfully</string>
+    <string name="msg_trip_export_failed">Failed to export trip</string>
+    <string name="msg_all_trips_exported">All trips exported successfully</string>
+    <string name="msg_all_trips_export_failed">Failed to export all trips</string>
+    <string name="msg_failed_to_load_trips">Failed to load trips</string>
+    <string name="msg_failed_to_delete_trip">Failed to delete trip</string>
+    <string name="msg_failed_to_export_trip">Failed to export trip</string>
+    <string name="msg_failed_to_get_initial_location">Failed to get initial location</string>
+    <string name="msg_failed_to_start_tracking">Failed to start tracking</string>
+    <string name="msg_failed_to_stop_tracking">Failed to stop tracking</string>
+    <string name="msg_failed_to_save_location">Failed to save location</string>
+    <string name="msg_failed_to_update_interval">Failed to update interval</string>
+    <string name="msg_failed_to_update_background_tracking">Failed to update background tracking</string>
+    <string name="msg_invalid_trip_data">Invalid trip data</string>
+    <string name="msg_invalid_location_data">Invalid location data</string>
+    <string name="msg_trip_not_found">Trip not found</string>
+    <string name="msg_location_service_unavailable">Location service unavailable</string>
+    <string name="msg_no_location_available">No location available</string>
+    <string name="msg_location_service_error">Location service error</string>
+    <string name="msg_failed_to_get_current_location">Failed to get current location</string>
+    <string name="msg_failed_to_request_location_updates">Failed to request location updates</string>
+    <string name="msg_failed_to_export_trip_csv">Failed to export trip to CSV</string>
+    <string name="msg_failed_to_export_trip_json">Failed to export trip to JSON</string>
+    <string name="msg_failed_to_export_all_trips_csv">Failed to export all trips to CSV</string>
+    <string name="msg_failed_to_get_all_trips">Failed to get all trips</string>
+    <string name="msg_failed_to_get_active_trip">Failed to get active trip</string>
+    <string name="msg_failed_to_start_new_trip">Failed to start new trip</string>
+    <string name="msg_failed_to_stop_trip">Failed to stop trip</string>
+    <string name="msg_failed_to_delete_trip_db">Failed to delete trip</string>
+    <string name="msg_failed_to_add_location_point">Failed to add location point</string>
+    <string name="msg_failed_to_update_trip_distance">Failed to update trip distance</string>
+    <string name="msg_unsupported_format">Unsupported format: %s</string>
+    
+    <!-- File Export -->
+    <string name="export_share_trip_data">Share Trip Data</string>
+    <string name="export_csv_format">csv</string>
+    <string name="export_json_format">json</string>
+    <string name="export_csv_mime">text/csv</string>
+    <string name="export_json_mime">application/json</string>
+    <string name="export_csv_header_trip">Trip ID,Start Time,End Time,Duration (ms),Distance (km),Is Completed</string>
+    <string name="export_csv_header_location">Location Points</string>
+    <string name="export_csv_header_location_points">Timestamp,Latitude,Longitude,Speed (m/s),Accuracy (m)</string>
+    <string name="export_csv_completed_yes">Yes</string>
+    <string name="export_csv_completed_no">No</string>
+    <string name="export_file_name_trip" formatted="false">trip_%d_%s.%s</string>
+    <string name="export_file_name_all_trips">all_trips_%d.csv</string>
+    
+    <!-- Database -->
+    <string name="db_trips_table">trips</string>
+    <string name="db_location_points_table">location_points</string>
+    <string name="db_settings_name">settings</string>
+    
+    <!-- Navigation Routes -->
+    <string name="route_tracking">tracking</string>
+    <string name="route_history">trip_history</string>
+    <string name="route_settings">settings</string>
+    
+    <!-- Content Descriptions -->
+    <string name="cd_tracking">Tracking</string>
+    <string name="cd_history">History</string>
+    <string name="cd_settings">Settings</string>
+    <string name="cd_download">Download</string>
+    <string name="cd_export">Export trip data</string>
+    <string name="cd_delete">Delete trip</string>
+    
+    <!-- API Keys -->
+    <string name="maps_api_key">AIzaSyAq2MrlsLI7i8hLQa2WGAfLWkk9URKQOQo</string>
+    
+    <!-- Preview Strings -->
+    <string name="preview_getting_location">Getting Location...</string>
+    <string name="preview_start_tracking">Start Tracking</string>
+    <string name="preview_trip_history">Trip History</string>
+    <string name="preview_no_trips_recorded">No trips recorded yet</string>
+    <string name="preview_settings">Settings</string>
+    <string name="preview_location_interval">Location Update Interval</string>
+    <string name="preview_location_interval_desc">How often the app should update your location</string>
+    <string name="preview_background_tracking">Background Tracking</string>
+    <string name="preview_background_tracking_desc">Allow tracking to continue when the app is in the background</string>
+    <string name="preview_5_seconds">5 seconds</string>
+    <string name="preview_enabled">Enabled</string>
+</resources>
