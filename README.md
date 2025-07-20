@@ -99,8 +99,11 @@ A modern Android application built with Jetpack Compose and MVVM architecture fo
 4. **View History**: Navigate to the History tab to see all recorded trips
 5. **Configure Settings**: Adjust tracking intervals and background tracking in Settings
 
+## Unit Test Cases
+I implemented some test cases for UseCases, using Mockito and Junit
+
 ## FAKE LOCATION
-I used LOKITO APP FOR THE FAKE LOCATION
+I used LOCKITO APP FOR THE FAKE LOCATION
 
 ## Development Setup
 
@@ -108,3 +111,8 @@ I used LOKITO APP FOR THE FAKE LOCATION
 2. Open in Android Studio
 3. Sync Gradle dependencies
 4. Build and run on device/emulator
+
+## NOTE
+
+This project is well-structured and coded with best practices.
+Please read the Architecture Analysis for more detailed information, which I designed using AI. 
